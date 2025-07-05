@@ -68,9 +68,9 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 hover:bg-white ${
         isScrolled || hoveredMenu || isMobileOpen
-          ? "bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm"
+          ? "backdrop-blur-md border-b border-gray-200 shadow-sm"
           : "bg-transparent"
       }`}
     >
@@ -189,8 +189,8 @@ const Header = () => {
         <div className="hidden lg:block">
           <a
             href="/contact"
-            className="border border-black text-black bg-transparent px-6 py-3 rounded-lg font-semibold flex items-center gap-2
-                       hover:bg-black hover:text-white transition-all duration-200 hover:shadow-lg hover:shadow-black/20"
+            className="text-black bg-transparent px-6 py-3 rounded-lg font-semibold flex items-center gap-2
+                       hover:bg-yellow-400 hover:text-white transition-all duration-200 hover:shadow-lg hover:shadow-black/20"
           >
             Let's connect <ArrowRight size={16} />
           </a>

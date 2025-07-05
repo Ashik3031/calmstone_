@@ -18,7 +18,7 @@ export default function HoverPanel({ title, body, img, href }) {
         src={img}
         alt={title}
         fill
-        className="object-cover transition-transform duration-700 group-hover:scale-110"
+        className="object-cover transition-transform duration-900 group-hover:scale-110"
       />
       
       <div className="absolute inset-0 bg-gradient-to-b from-[#042783]/80 to-[#042783]/30" />

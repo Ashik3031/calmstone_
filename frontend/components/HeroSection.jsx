@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { Search } from 'lucide-react';
+import Image from 'next/image';
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -83,14 +84,15 @@ const HeroSection = () => {
                 `}
               >
                 <div className="flex items-center justify-center mb-6">
-                  <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center mr-2">
+                  {/* <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center mr-2">
                     <span className="text-black font-bold text-sm">W</span>
                   </div>
-                  <span className="text-lg font-semibold">WebCraft Studio</span>
+                  <span className="text-lg font-semibold">WebCraft Studio</span> */}
+                  <Image src="/logo.png" alt="Logo" width={200} height={200} />
                 </div>
 
                 <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
-                  Create stunning <span className="text-blue-400">websites</span> in minutes
+                  Create stunning <span className="text-yellow-400">websites</span> in minutes
                 </h1>
                 <h2 className="text-xl md:text-2xl font-semibold mb-6">— with AI assistance</h2>
                 <p className="text-base mb-8 opacity-90">
