@@ -9,7 +9,7 @@ export default function SectorsSection() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   
   return (
-    <section className="group flex h-[60vh] overflow-hidden">
+    <section className="group flex h-[80vh] overflow-hidden">
       {sections.map((s, index) => (
         <motion.div 
           key={s.title} 
@@ -17,7 +17,7 @@ export default function SectorsSection() {
           animate={{
             width: hoveredIndex === index ? '50%' : hoveredIndex !== null ? '16.67%' : '25%',
           }}
-        //   transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+          transition={{ type: 'spring', stiffness: 120, damping: 30 }}
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
         //   style={{ transformOrigin: 'center' }}

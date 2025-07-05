@@ -28,10 +28,10 @@ export default function HoverPanel({ title, body, img, href }) {
           hide: { opacity: 0, y: 20 },
           show: { opacity: 1, y: 0 },
         }}
-        className="relative z-10 p-8 w-full h-full flex flex-col justify-start pointer-events-none"
+        className="relative z-10 p-8 w-full h-full flex flex-col justify-start pointer-events-none mt-10"
       >
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">{title}</h2>
-        <p className="text-2xl mt-6 max-w-sm leading-relaxed text-white">{body}</p>
+        <p className=" mt-6 max-w-sm leading-relaxed text-white">{body}</p>
         <span className="mt-6 inline-block w-fit border border-white px-4 py-2 text-white hover:bg-white hover:text-[#042783] transition-colors pointer-events-auto">
           Learn More
         </span>
