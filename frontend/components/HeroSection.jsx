@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react';
-
+import { Search } from 'lucide-react';
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -16,7 +16,7 @@ const HeroSection = () => {
 
       if (
         currentScrollY > 100 &&
-        currentScrollY < window.innerHeight * 0.8 &&
+        currentScrollY < window.innerHeight * 0.7 &&
         !isExpanded
       ) {
         setIsExpanded(true);
@@ -33,7 +33,7 @@ const HeroSection = () => {
 
   const videoContainerClasses = `
     relative overflow-hidden transition-all duration-700 ease-out
-    ${isExpanded ? 'w-full h-screen rounded-none' : 'w-[90%] max-w-6xl h-[80vh] rounded-3xl shadow-2xl'}
+    ${isExpanded ? 'w-full h-screen rounded-none' : 'w-[94%] h-[80vh] rounded-2xl shadow-2xl'}
   `;
 
   const overlayClasses = `
@@ -44,11 +44,11 @@ const HeroSection = () => {
   return (
     <div className="relative">
       {/* Hero Container */}
-      <div className="h-[200vh] bg-white">
+      <div className="h-[150vh] bg-white">
         {/* Fixed Video Section */}
         <div
-          className={`fixed inset-0 flex items-center justify-center transition-all duration-700 ${
-            scrollY >= window.innerHeight * 0.8 ? 'opacity-0 pointer-events-none' : 'opacity-100 z-10'
+          className={`fixed inset-0 flex items-center justify-center transition-all duration-700 pt-16 ${
+            scrollY >= window.innerHeight * 0.7 ? 'opacity-0 pointer-events-none' : 'opacity-100 z-10'
           }`}
         >
           <div className={videoContainerClasses}>
@@ -61,7 +61,7 @@ const HeroSection = () => {
               playsInline
             >
               <source
-                src="https://player.cloudinary.com/embed/?cloud_name=dsfgakhl4&public_id=site%2Fhero%2Fcffp639jdjbvdk4tjsrb&profile=cld-default"
+                src="https://res.cloudinary.com/dsfgakhl4/video/upload/f_auto,q_auto/site/hero/cffp639jdjbvdk4tjsrb.mp4"
                 type="video/mp4"
               />
             </video>
@@ -73,44 +73,30 @@ const HeroSection = () => {
             <div className="relative z-20 h-full flex flex-col items-center justify-center text-white px-8">
               {/* Initial Content */}
               <div
-                className={`text-center transition-all duration-500 ${
-                  showSecondText ? 'opacity-0 -translate-y-20' : 'opacity-100 translate-y-0'
-                }`}
+                className={`
+                  text-center transition-all duration-500
+                  ${isExpanded ? 'w-full h-screen' : 'w-[94%] h-[80vh]'}
+                  mx-auto
+                  px-4 sm:px-8 md:px-16
+                  py-14 lg:py-20
+                  mt-16      
+                  ${showSecondText ? 'opacity-0 -translate-y-20' : 'opacity-100 translate-y-0'}
+                `}
               >
-                <div className="flex items-center justify-center mb-8">
-                  <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center mr-3">
-                    <span className="text-black font-bold text-lg">W</span>
+                <div className="flex items-center justify-center mb-6">
+                  <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center mr-2">
+                    <span className="text-black font-bold text-sm">W</span>
                   </div>
-                  <span className="text-2xl font-semibold">WebCraft Studio</span>
+                  <span className="text-lg font-semibold">WebCraft Studio</span>
                 </div>
 
-                <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
                   Create stunning <span className="text-blue-400">websites</span> in minutes
                 </h1>
-                <h2 className="text-3xl md:text-4xl font-semibold mb-8">— with AI assistance</h2>
-                <p className="text-lg mb-12 opacity-90">
+                <h2 className="text-xl md:text-2xl font-semibold mb-6">— with AI assistance</h2>
+                <p className="text-base mb-8 opacity-90">
                   No coding required. Professional templates included.
                 </p>
-
-                {/* CTA Box */}
-                <div className=" backdrop-blur-sm rounded-2xl p-6 max-w-2xl mx-auto">
-                  <div className="flex flex-col md:flex-row items-center gap-4">
-                    <div className="flex-1">
-                      <div className="text-sm text-blue-600 font-medium mb-2">WEBCRAFT STUDIO</div>
-                      <div className="text-2xl font-bold text-gray-900">Website Builder</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-gray-900">Free Trial</div>
-                      <div className="text-sm text-gray-600">No credit card required</div>
-                    </div>
-                    <button
-                      type="button"
-                      className="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
-                    >
-                      Start Building
-                    </button>
-                  </div>
-                </div>
               </div>
 
               {/* Second Text Layer */}
@@ -119,7 +105,7 @@ const HeroSection = () => {
                   showSecondText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
                 }`}
               >
-                <div className="text-center w-full max-w-4xl">
+                <div className="text-center w-full max-w-4xl pt-18">
                   <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
                     Build your dream website in minutes
                   </h2>
