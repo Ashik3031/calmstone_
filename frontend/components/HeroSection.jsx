@@ -1,15 +1,19 @@
-'use client'
+'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { Search } from 'lucide-react';
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [viewportHeight, setViewportHeight] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
   const [showSecondText, setShowSecondText] = useState(false);
   const containerRef = useRef(null);
   const videoRef = useRef(null);
 
   useEffect(() => {
+    // Only runs on client
+    setViewportHeight(window.innerHeight);
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setScrollY(currentScrollY);
@@ -43,12 +47,10 @@ const HeroSection = () => {
 
   return (
     <div className="relative">
-      {/* Hero Container */}
       <div className="h-[150vh] bg-white">
-        {/* Fixed Video Section */}
         <div
           className={`fixed inset-0 flex items-center justify-center transition-all duration-700 pt-16 ${
-            scrollY >= window.innerHeight * 0.7 ? 'opacity-0 pointer-events-none' : 'opacity-100 z-10'
+            scrollY >= viewportHeight * 0.7 ? 'opacity-0 pointer-events-none' : 'opacity-100 z-10'
           }`}
         >
           <div className={videoContainerClasses}>
@@ -61,17 +63,14 @@ const HeroSection = () => {
               playsInline
             >
               <source
-                src="https://res.cloudinary.com/dsfgakhl4/video/upload/f_auto,q_auto/site/hero/cffp639jdjbvdk4tjsrb.mp4"
+                src="/hero.mp4"
                 type="video/mp4"
               />
             </video>
 
-            {/* Overlay */}
             <div className={overlayClasses}></div>
 
-            {/* Content */}
             <div className="relative z-20 h-full flex flex-col items-center justify-center text-white px-8">
-              {/* Initial Content */}
               <div
                 className={`
                   text-center transition-all duration-500
@@ -99,7 +98,6 @@ const HeroSection = () => {
                 </p>
               </div>
 
-              {/* Second Text Layer */}
               <div
                 className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ${
                   showSecondText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { ArrowRight, Menu, X, ChevronDown } from "lucide-react";
+import Image from "next/image";
 
 const megaMenus = {
   Company: {
@@ -75,9 +76,16 @@ const Header = () => {
     >
       <nav className="max-w-7xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="text-black text-2xl font-bold tracking-tight">
+        {/* <a href="#" className="text-black text-2xl font-bold tracking-tight">
           calmstone
-        </a>
+        </a> */}
+        <Image
+          src="/logo.png"
+          alt="calmstone"
+          width={250}
+          height={250}
+          className="object-contain"
+        />
 
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center gap-10">
