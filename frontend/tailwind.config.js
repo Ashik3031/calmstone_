@@ -6,6 +6,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+       keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 25s linear infinite",
+      },
+    
       colors: {
         primary:  "#002855",
         accent:   "#0094FF",

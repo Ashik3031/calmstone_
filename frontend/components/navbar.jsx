@@ -1,42 +1,37 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { ArrowRight, Menu, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import useScrollDirection from "../hooks/useScrollDirection";   // adjust path if needed
 
 /* ----------------- Mega-menu data ----------------- */
 const megaMenus = {
-  Company: {
+  
+
+  Services: {
     columns: {
-      Company: [
-        "About Us",
-        "News & Insights",
-        "Our Team",
-        "Our History",
-        "Our Commitments",
-        "Governance",
+      Services: [
+        { label: "Engineering, Procurement & Construction (EPC)", href: "/solutions/integrated-approach" },
+        { label: "Procurement & Supply Chain Management", href: "/solutions/mcdermott-difference" },
+        { label: "Onshore Construction", href: "/solutions/mcdermott-difference" },
+        { label: "Project Management & Execution", href: "/solutions/mcdermott-difference" },
+        { label: "Plant Revamps & Expansion Projects", href: "/solutions/mcdermott-difference" },
       ],
     },
-    all: "Learn more about us",
+    all: { label: "Explore our solutions", href: "/solutions" },
   },
 
-  Solutions: {
+  Commitments: {
     columns: {
-      Solutions: ["Integrated Approach", "The McDermott Difference"],
-    },
-    all: "Explore our solutions",
-  },
-
-  Sustainability: {
-    columns: {
-      Sustainability: [
-        "Priorities & Reporting",
-        "Sustainability Performance",
-        "People",
+      Commitments: [
+        { label: "Priorities & Reporting", href: "/sustainability/priorities-reporting" },
+        { label: "Sustainability Performance", href: "/sustainability/performance" },
+        { label: "People", href: "/sustainability/people" },
       ],
     },
-    all: "Our sustainability journey",
+    all: { label: "Our sustainability journey", href: "/sustainability" },
   },
 };
 /* -------------------------------------------------- */
@@ -94,16 +89,25 @@ const Header = () => {
     <header className={headerClasses}>
       <nav className="max-w-7xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Image
-          src="/logo.png"
-          alt="calmstone"
-          width={250}
-          height={250}
-          className="object-contain"
-        />
+        <Link href="/">
+          <Image
+            src="/logo.png"
+            alt="calmstone"
+            width={250}
+            height={250}
+            className="object-contain"
+          />
+        </Link>
 
         {/* ---------- Desktop links ---------- */}
         <div className="hidden lg:flex items-center gap-10">
+          {/* Careers link */}
+          <Link
+            href="/about"
+            className="text-gray-900 font-medium hover:text-black transition-colors duration-200 py-2 text-base tracking-wide"
+          >
+            About Us
+          </Link>
           {links.map((name) => (
             <div
               key={name}
@@ -133,14 +137,14 @@ const Header = () => {
                                   {cat}
                                 </h4>
                                 <ul className="space-y-3">
-                                  {items.map((item) => (
-                                    <li key={item}>
-                                      <a
-                                        href="#"
+                                  {items.map(({ label, href }) => (
+                                    <li key={label}>
+                                      <Link
+                                        href={href}
                                         className="hover:text-black transition-colors duration-200 text-sm font-medium block py-1"
                                       >
-                                        {item}
-                                      </a>
+                                        {label}
+                                      </Link>
                                     </li>
                                   ))}
                                 </ul>
@@ -158,29 +162,37 @@ const Header = () => {
 
                     {/* ---- Mega-menu footer link ---- */}
                     <div className="pt-6 border-t border-gray-200 flex justify-end mt-auto">
-                      <a
-                        href="#"
+                      <Link
+                        href={megaMenus[name].all.href}
                         className="text-sm font-semibold text-gray-900 hover:text-black transition-colors duration-200 flex items-center gap-2"
                       >
-                        {megaMenus[name].all} <ArrowRight size={14} />
-                      </a>
+                        {megaMenus[name].all.label} <ArrowRight size={14} />
+                      </Link>
                     </div>
                   </div>
                 </div>
               )}
             </div>
           ))}
+
+          {/* Careers link */}
+          <Link
+            href="/careers"
+            className="text-gray-900 font-medium hover:text-black transition-colors duration-200 py-2 text-base tracking-wide"
+          >
+            Careers
+          </Link>
         </div>
 
         {/* ---------- Desktop CTA ---------- */}
         <div className="hidden lg:block">
-          <a
+          <Link
             href="/contact"
             className="text-black bg-transparent px-6 py-3 rounded-lg font-semibold flex items-center gap-2
                        hover:bg-yellow-400 hover:text-white transition-all duration-200 hover:shadow-lg hover:shadow-black/20"
           >
             Let's connect <ArrowRight size={16} />
-          </a>
+          </Link>
         </div>
 
         {/* ---------- Burger icon ---------- */}
@@ -223,15 +235,15 @@ const Header = () => {
                                 {cat}
                               </h4>
                               <ul className="space-y-2">
-                                {items.map((item) => (
-                                  <li key={item}>
-                                    <a
-                                      href="#"
+                                {items.map(({ label, href }) => (
+                                  <li key={label}>
+                                    <Link
+                                      href={href}
                                       className="text-gray-700 hover:text-black transition-colors duration-200 text-sm block py-1"
                                       onClick={() => setIsMobileOpen(false)}
                                     >
-                                      {item}
-                                    </a>
+                                      {label}
+                                    </Link>
                                   </li>
                                 ))}
                               </ul>
@@ -241,33 +253,47 @@ const Header = () => {
                       </div>
                     )}
 
-                    {/* ---- Optional: highlights / posts / list ---- */}
-                    {/* (Same conditional sections as desktop—
-                        they’ll render only if present) */}
-
                     <div className="mt-4 pt-3 border-t border-gray-300">
-                      <a
-                        href="#"
+                      <Link
+                        href={megaMenus[name].all.href}
                         className="text-sm font-semibold text-gray-900 hover:text-black transition-colors duration-200 flex items-center gap-2"
                         onClick={() => setIsMobileOpen(false)}
                       >
-                        {megaMenus[name].all} <ArrowRight size={12} />
-                      </a>
+                        {megaMenus[name].all.label} <ArrowRight size={12} />
+                      </Link>
                     </div>
                   </div>
                 )}
               </div>
             ))}
 
+            {/* Careers mobile link */}
+            <Link
+              href="/careers"
+              className="block text-gray-900 font-medium py-3 hover:text-black transition-colors duration-200"
+              onClick={() => setIsMobileOpen(false)}
+            >
+              Careers
+            </Link>
+            {/* Careers mobile link */}
+            <Link
+              href="/about"
+              className="block text-gray-900 font-medium py-3 hover:text-black transition-colors duration-200"
+              onClick={() => setIsMobileOpen(false)}
+            >
+              About us
+            </Link>
+          
+
             {/* ---- Mobile CTA ---- */}
-            <a
+            <Link
               href="/contact"
               className="block border border-black text-black bg-transparent px-4 py-3 rounded-lg font-semibold text-center mt-6
                          hover:bg-black hover:text-white transition-colors duration-200"
               onClick={() => setIsMobileOpen(false)}
             >
               Let's Build Together
-            </a>
+            </Link>
           </div>
         </div>
       )}
