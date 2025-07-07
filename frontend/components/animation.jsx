@@ -1,199 +1,109 @@
+/* components/HeroScrollSlider.jsx – deck follows scroll continuously */
 'use client';
+import { useEffect, useRef, useState } from 'react';
 
-import React, { useState, useEffect } from 'react';
-import { ChevronRight } from 'lucide-react';
+/* 1.  slide data */
+const slides = [
+  { img: 'https://res.cloudinary.com/dsfgakhl4/image/upload/v1751460876/site/services/qbsusqfwie6njm9web0s.png', stat: '30,000+',  label: 'Bright Minds'   },
+  { img: 'https://res.cloudinary.com/dsfgakhl4/image/upload/v1750488653/perfume-bottle-nature_2_a7cyha.jpg',       stat: '90+',     label: 'Nationalities' },
+  { img: 'https://res.cloudinary.com/dsfgakhl4/image/upload/v1751460876/site/services/qbsusqfwie6njm9web0s.png', stat: '100%',    label: 'Committed'      },
+  { img: 'https://res.cloudinary.com/dsfgakhl4/image/upload/v1750488653/perfume-bottle-nature_2_a7cyha.jpg',       stat: '100 yrs', label: 'Heritage'       },
+  { img: 'https://res.cloudinary.com/dsfgakhl4/image/upload/v1751460876/site/services/qbsusqfwie6njm9web0s.png', stat: '1 Team',  label: 'One Vision'     }
+];
 
-const McDermottHero = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [scrollY, setScrollY] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
+/* 2.  gap size (% of card height) */
+const CARD_GAP = 60;          // keep it roomy
 
-  // Carousel data
-  const slides = [
-    {
-      image: "/api/placeholder/400/300",
-      title: "30,000+",
-      subtitle: "Bright Minds",
-      description: "Global team of engineers and specialists"
-    },
-    {
-      image: "/api/placeholder/400/300",
-      title: "50+",
-      subtitle: "Countries",
-      description: "Worldwide project delivery"
-    },
-    {
-      image: "/api/placeholder/400/300",
-      title: "75+",
-      subtitle: "Years",
-      description: "Industry leadership and innovation"
-    }
-  ];
+export default function HeroScrollSlider() {
+  const wrapperRef = useRef(null);
 
-  // Handle scroll effect
+  /* progress = 0 … (slides.length-1) as float */
+  const [progress, setProgress] = useState(0);
+
+  /* ---- scroll listener -------------------------------------------------- */
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+
+    /* rAF throttling so we don’t set state on every raw scroll event */
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const { top, height } = wrapper.getBoundingClientRect();
+        const winH   = window.innerHeight;
+        const clampedY = Math.min(Math.max(-top, 0), height - winH);   // 0 → wrapperScrollRange
+        setProgress(clampedY / winH);                                  // float
+        ticking = false;
+      });
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    onScroll();                            // initialise
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Auto-advance carousel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+  /* derived integer for dot highlighting */
+  const activeIndex = Math.round(progress);
 
-    return () => clearInterval(interval);
-  }, [slides.length]);
+  /* ---- helpers ---------------------------------------------------------- */
+  const scrollToSlide = (i) => {
+    const wrapTop = wrapperRef.current?.offsetTop ?? 0;
+    window.scrollTo({ top: wrapTop + i * window.innerHeight, behavior: 'smooth' });
+  };
 
-  // Trigger entrance animation
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const parallaxOffset = scrollY * 0.5;
-
+  /* ---- render ----------------------------------------------------------- */
   return (
-    <>
-      {/* Hero Section */}
-      <div className="relative h-screen overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600">
-        {/* Background with parallax */}
-        <div 
-          className="absolute inset-0 bg-gradient-to-br from-blue-900/50 via-blue-800/50 to-blue-600/50"
-          style={{
-            transform: `translateY(${parallaxOffset}px)`,
-          }}
-        />
-        
-        {/* Main content container */}
-        <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="h-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            
-            {/* Left side - Text content */}
-            <div className={`text-white space-y-8 transform transition-all duration-1000 ease-out ${
-              isVisible ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'
-            }`}>
-              <div className="space-y-4">
-                <h1 className="text-5xl lg:text-6xl font-light leading-tight">
-                  for now<br />
-                  <span className="text-blue-200">and what's next</span>
-                </h1>
-                <p className="text-xl text-blue-100 max-w-lg">
-                  An integrated approach to responsibly harness and transform global energy resources
-                </p>
-              </div>
-              
-              <button className="group border-2 border-white bg-transparent hover:bg-white hover:text-blue-900 text-white px-8 py-3 font-medium uppercase tracking-wide transition-all duration-300 flex items-center gap-2">
-                The McDermott Difference
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
+    <section ref={wrapperRef} style={{ height: `${slides.length * 100}vh` }}>
+      <div className="relative sticky top-0 h-screen flex items-center justify-between px-8 md:px-20 bg-white text-neutral-900">
 
-            {/* Right side - Carousel */}
-            <div className={`relative transform transition-all duration-1000 ease-out delay-300 ${
-              isVisible ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'
-            }`}>
-              <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl">
-                
-                {/* Employee image */}
-                <div className="relative mb-6 overflow-hidden rounded-xl">
-                  <img 
-                    src={slides[currentSlide].image}
-                    alt="McDermott Team Member"
-                    className="w-full h-64 object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                </div>
-
-                {/* Stats card */}
-                <div className="bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl p-6 text-white relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16" />
-                  <div className="relative z-10">
-                    <div className="text-4xl font-bold mb-2">
-                      {slides[currentSlide].title}
-                    </div>
-                    <div className="text-xl font-light mb-1">
-                      {slides[currentSlide].subtitle}
-                    </div>
-                    <div className="text-sm text-purple-100">
-                      {slides[currentSlide].description}
-                    </div>
-                  </div>
-                  <ChevronRight className="absolute bottom-4 right-4 w-6 h-6 text-white/60" />
-                </div>
-
-                {/* Navigation dots */}
-                <div className="flex justify-center mt-6 space-x-2">
-                  {slides.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentSlide(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                        index === currentSlide 
-                          ? 'bg-white scale-125' 
-                          : 'bg-white/40 hover:bg-white/60'
-                      }`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* headline */}
+        <div className="max-w-xl">
+          <h1 className="text-[2.8rem] md:text-[4.5rem] font-bold leading-tight">
+            for now<br />and what’s next
+          </h1>
+          <button className="mt-8 px-6 py-3 border-2 border-neutral-900 font-medium tracking-wide hover:bg-neutral-900 hover:text-white transition">
+            The McDermott Difference
+          </button>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse" />
-          </div>
+        {/* slider deck */}
+        <div className="relative w-96 h-[28rem] shrink-0 overflow-visible pointer-events-none">
+          {slides.map(({ img, stat, label }, i) => {
+            const offset = (i - progress) * (100 + CARD_GAP);   // continuous
+            return (
+              <div
+                key={stat}
+                className="absolute inset-0 rounded-md shadow-2xl transition-transform duration-0
+                           will-change-transform"
+                style={{ transform: `translateY(${offset}%)` }}
+              >
+                <img src={img} alt={label} className="h-full w-full object-cover rounded-md" />
+                <div className="absolute bottom-0 inset-x-0 py-6 px-6 bg-neutral-900/70 backdrop-blur-sm rounded-b-md">
+                  <p className="text-white text-4xl font-extrabold mb-1">{stat}</p>
+                  <p className="text-white/90 tracking-wide">{label}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* dots */}
+        <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 pointer-events-auto">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollToSlide(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className={`h-3 w-3 rounded-full border transition
+                          ${i === activeIndex
+                            ? 'bg-neutral-900 border-neutral-900 scale-110'
+                            : 'bg-transparent border-neutral-400'}`}
+            />
+          ))}
         </div>
       </div>
-
-      {/* Additional content sections for scrolling */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-4xl font-bold text-gray-900 mb-8">Our Services</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {['Engineering', 'Procurement', 'Construction'].map((service, index) => (
-                <div 
-                  key={service}
-                  className={`bg-white p-8 rounded-xl shadow-lg transform transition-all duration-700 delay-${index * 200} ${
-                    scrollY > 200 ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                  }`}
-                >
-                  <h3 className="text-2xl font-bold text-blue-900 mb-4">{service}</h3>
-                  <p className="text-gray-600">
-                    Excellence in {service.toLowerCase()} solutions for energy infrastructure worldwide.
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-blue-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className={`transform transition-all duration-1000 ${
-            scrollY > 600 ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-          }`}>
-            <h2 className="text-4xl font-bold text-white mb-8">Global Impact</h2>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Delivering sustainable energy solutions that power communities and drive economic growth across the globe.
-            </p>
-          </div>
-        </div>
-      </section>
-    </>
+    </section>
   );
-};
-
-export default McDermottHero;
+}
