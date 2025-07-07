@@ -1,31 +1,38 @@
 
 export const sections = [
   {
-    title: 'Energy Transition',
+    title: 'Engineering, Procurement & Construction (EPC)',
     body:
-      'End-to-end support for renewable integration, CCUS, and hydrogen.',
+      'We deliver end-to-end EPC solutions, ensuring cost efficiency, timely delivery, and quality across industrial and infrastructure projects under a single contract.',
     img: '/images/ship_energy.jpg',              
-     href: '/services/energy-transition',    
+     href: '/energy_transition',    
   },
   {
-    title: 'Onshore',
+    title: 'Procurement & Supply Chain Management ',
     body:
-      'World-scale LNG, gas-processing and petro-chem projects from FEED to start-up.',
+      'Our procurement team ensures timely, cost-effective sourcing and efficient logistics, backed by strong vendor networks and strict quality standards to support seamless project execution.',
     img: '/images/onshore.jpg',
-     href: '/services/onshore',
+     href: '/offshore',
   },
   {
-    title: 'Offshore',
+    title: 'Onshore Construction',
     body:
-      'Brown-field upgrades, platform removal and heavy-lift expertise in every basin worldwide.',
+      'We ensure timely, cost-effective sourcing and logistics with trusted vendors and strict quality standards for smooth project execution.',
     img: '/images/offshore.jpg',
-     href: '/services/offshore',
+     href: '/onshore',
   },
   {
-    title: 'Subsea & Floating Facilities',
+    title: 'Project Management & Execution',
     body:
-      'Unparalleled experience across the full lifecycle of deep-water projects, including asset removal and decommissioning.',
+      'We deliver projects on time and within budget through full lifecycle management, using global best practices in planning, risk control, and stakeholder coordination..',
     img: '/images/subsea.jpg',
-     href: '/services/subsea',
+     href: '/subsea',
+  },
+  {
+    title: 'Plant Revamps & Expansion Projects',
+    body:
+      'We deliver customized brownfield solutions—revamps, upgrades, and expansions—focused on minimizing downtime and maximizing efficiency in live plant environments.',
+    img: '/images/plant.jpg',
+     href: '/expansion_project',
   },
 ];
