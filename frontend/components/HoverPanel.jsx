@@ -88,7 +88,7 @@ export default function HoverPanel({ title, body, img, href, isExpanded, onToggl
         src={img}
         alt={title}
         fill
-        className="object-cover opacity-100 z-0"
+        className="object-cover transition-transform duration-900 group-hover:scale-110"
       />
       
       <div className="absolute inset-0 " />
