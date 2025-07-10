@@ -10,6 +10,7 @@ import TestimonialSlider from '../../components/TestimonialSlider'
 import Animation from '../../components/animation'
 import SmallFooter from '../../components/Footer'
 
+
 export default function Home() {
   return (
     <>
@@ -20,6 +21,7 @@ export default function Home() {
       <HeroScrollSlider/>
       <LogoMarque color="#bfa046" />
       <TestimonialSlider />
+      
       <CertificationsSection/>
       <SmallFooter/>
 
