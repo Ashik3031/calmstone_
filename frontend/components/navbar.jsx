@@ -76,7 +76,7 @@ const Header = () => {
     scrollDir === "up" || hoveredMenu || isMobileOpen;  // visible if scrolling up or interacting
 
   const headerClasses = [
-    "fixed inset-x-0 top-0 z-50 transition-transform duration-300 hover:bg-white",
+    "fixed inset-x-0 top-0 z-50 transition-transform duration-300 hover:bg-black/80",
     !showNav && "-translate-y-full",                    // slide away on scroll-down
     (isPastHero || hoveredMenu || isMobileOpen) &&
       "backdrop-blur-md border-b border-gray-200 shadow-sm",
@@ -91,7 +91,7 @@ const Header = () => {
         {/* Logo */}
         <Link href="/">
           <Image
-            src="/logo.png"
+            src="/logow.png"
             alt="calmstone"
             width={250}
             height={250}
@@ -104,7 +104,7 @@ const Header = () => {
           {/* Careers link */}
           <Link
             href="/about"
-            className="text-gray-900 font-medium hover:text-black transition-colors duration-200 py-2 text-base tracking-wide"
+            className="text-white font-medium hover:text-white transition-colors duration-200 py-2 text-lg tracking-wide uppercase"
           >
             About Us
           </Link>
@@ -114,7 +114,7 @@ const Header = () => {
               className="relative"
               onMouseEnter={() => setHoveredMenu(name)}
             >
-              <button className="text-gray-900 font-medium hover:text-black transition-colors duration-200 py-2 text-base tracking-wide">
+              <button className="text-white font-medium hover:text-white transition-colors duration-200 py-2 text-lg tracking-wide uppercase">
                 {name}
               </button>
 
@@ -122,7 +122,7 @@ const Header = () => {
               {hoveredMenu === name && (
                 <div
                   onMouseLeave={() => setHoveredMenu(null)}
-                  className="fixed left-0 top-full w-full bg-white/95 backdrop-blur-md text-gray-900
+                  className="fixed left-0 top-full w-full bg-black/95 backdrop-blur-md text-white
                              shadow-2xl border-t border-gray-200 z-40 h-[400px] overflow-y-auto"
                 >
                   <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 h-full flex flex-col">
@@ -164,7 +164,7 @@ const Header = () => {
                     <div className="pt-6 border-t border-gray-200 flex justify-end mt-auto">
                       <Link
                         href={megaMenus[name].all.href}
-                        className="text-sm font-semibold text-gray-900 hover:text-black transition-colors duration-200 flex items-center gap-2"
+                        className="text-sm font-semibold text-white hover:text-black transition-colors duration-200 flex items-center gap-2"
                       >
                         {megaMenus[name].all.label} <ArrowRight size={14} />
                       </Link>
@@ -178,7 +178,7 @@ const Header = () => {
           {/* Careers link */}
           <Link
             href="/careers"
-            className="text-gray-900 font-medium hover:text-black transition-colors duration-200 py-2 text-base tracking-wide"
+            className="text-white font-medium hover:text-black transition-colors duration-200 py-2 text-lg tracking-wide uppercase"
           >
             Careers
           </Link>
@@ -187,9 +187,9 @@ const Header = () => {
         {/* ---------- Desktop CTA ---------- */}
         <div className="hidden lg:block">
           <Link
-            href="/contact"
-            className="text-black bg-transparent px-6 py-3 rounded-lg font-semibold flex items-center gap-2
-                       hover:bg-yellow-400 hover:text-white transition-all duration-200 hover:shadow-lg hover:shadow-black/20"
+            href="#"
+            className="text-black bg-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2
+                       hover:bg-black/90 hover:text-white transition-all duration-200 hover:shadow-lg hover:shadow-black/20"
           >
             Let's connect <ArrowRight size={16} />
           </Link>
@@ -212,7 +212,7 @@ const Header = () => {
               <div key={name} className="mb-4">
                 <button
                   onClick={() => toggleMobileSubmenu(name)}
-                  className="w-full flex items-center justify-between text-gray-900 font-medium py-3 hover:text-black transition-colors duration-200 text-left"
+                  className="w-full flex items-center justify-between text-white font-medium py-3 hover:text-black transition-colors duration-200 text-left"
                 >
                   {name}
                   <ChevronDown
@@ -256,7 +256,7 @@ const Header = () => {
                     <div className="mt-4 pt-3 border-t border-gray-300">
                       <Link
                         href={megaMenus[name].all.href}
-                        className="text-sm font-semibold text-gray-900 hover:text-black transition-colors duration-200 flex items-center gap-2"
+                        className="text-sm font-semibold text-white hover:text-black transition-colors duration-200 flex items-center gap-2"
                         onClick={() => setIsMobileOpen(false)}
                       >
                         {megaMenus[name].all.label} <ArrowRight size={12} />
@@ -270,7 +270,7 @@ const Header = () => {
             {/* Careers mobile link */}
             <Link
               href="/careers"
-              className="block text-gray-900 font-medium py-3 hover:text-black transition-colors duration-200"
+              className="block text-white font-medium py-3 hover:text-black transition-colors duration-200"
               onClick={() => setIsMobileOpen(false)}
             >
               Careers
@@ -278,7 +278,7 @@ const Header = () => {
             {/* Careers mobile link */}
             <Link
               href="/about"
-              className="block text-gray-900 font-medium py-3 hover:text-black transition-colors duration-200"
+              className="block text-white font-medium py-3 hover:text-black transition-colors duration-200"
               onClick={() => setIsMobileOpen(false)}
             >
               About us

@@ -5,20 +5,17 @@ const ScrollRevealText = ({ text = '' }) => {
   const containerRef = useRef(null);
   const [revealedCount, setRevealedCount] = useState(0);
   const [inView, setInView] = useState(false);
-  const totalLength = text.length;
+  const words = text.split(' '); // Split by word
+  const totalLength = words.length;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setInView(entry.isIntersecting);
-      },
+      ([entry]) => setInView(entry.isIntersecting),
       { threshold: 0.4 }
     );
 
     if (containerRef.current) observer.observe(containerRef.current);
-    return () => {
-      if (containerRef.current) observer.unobserve(containerRef.current);
-    };
+    return () => containerRef.current && observer.unobserve(containerRef.current);
   }, []);
 
   useEffect(() => {
@@ -26,14 +23,12 @@ const ScrollRevealText = ({ text = '' }) => {
 
     if (inView) {
       interval = setInterval(() => {
-        setRevealedCount((prev) =>
-          prev < totalLength ? prev + 1 : totalLength
-        );
-      }, 30);
+        setRevealedCount((prev) => (prev < totalLength ? prev + 1 : totalLength));
+      }, 120);
     } else {
       interval = setInterval(() => {
         setRevealedCount((prev) => (prev > 0 ? prev - 1 : 0));
-      }, 15);
+      }, 50);
     }
 
     return () => clearInterval(interval);
@@ -42,7 +37,7 @@ const ScrollRevealText = ({ text = '' }) => {
   return (
     <section
       ref={containerRef}
-      className="min-h-[80vh] flex items-center justify-center px-6 bg-white"
+      className="min-h-[80vh] flex items-center justify-center px-6 bg-black"
     >
       <div className="text-center w-full max-w-4xl">
         {/* Top Yellow Line */}
@@ -52,20 +47,20 @@ const ScrollRevealText = ({ text = '' }) => {
           }`}
         >
           <div className="absolute inset-0 bg-yellow-400 rounded-full" />
-          <div className="absolute left-0 top-0 h-full w-8 bg-gradient-to-r from-white to-transparent" />
-          <div className="absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-white to-transparent" />
+          <div className="absolute left-0 top-0 h-full w-8 bg-gradient-to-r from-black to-transparent" />
+          <div className="absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-black to-transparent" />
         </div>
 
         {/* Animated Text */}
-        <p className="text-[28px] md:text-[40px] lg:text-[48px] font-light leading-snug tracking-wide text-black transition-opacity duration-700">
-          {text.split('').map((char, idx) => (
+        <p className="text-[28px] md:text-[40px] lg:text-[50px] font-bold leading-tight tracking-wide text-white transition-opacity duration-700">
+          {words.map((word, idx) => (
             <span
               key={idx}
               className={`inline-block transition-opacity duration-300 ${
                 idx < revealedCount ? 'opacity-100' : 'opacity-10'
               }`}
             >
-              {char === ' ' ? '\u00A0' : char}
+              {word}&nbsp;
             </span>
           ))}
         </p>
@@ -77,8 +72,8 @@ const ScrollRevealText = ({ text = '' }) => {
           }`}
         >
           <div className="absolute inset-0 bg-yellow-400 rounded-full" />
-          <div className="absolute left-0 top-0 h-full w-8 bg-gradient-to-r from-white to-transparent" />
-          <div className="absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-white to-transparent" />
+          <div className="absolute left-0 top-0 h-full w-8 bg-gradient-to-r from-black to-transparent" />
+          <div className="absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-black to-transparent" />
         </div>
       </div>
     </section>

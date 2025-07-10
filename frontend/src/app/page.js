@@ -5,22 +5,26 @@ import LogoMarque from '../../components/LogoMarque'
 import Navbar from '../../components/navbar'
 import ScrollRevealText from '../../components/ScrollRevealText '
 import SectorsSection from '../../components/SectorSection'
+import TestimonialSlider from '../../components/TestimonialSlider'
 
 import Animation from '../../components/animation'
+import SmallFooter from '../../components/Footer'
 
 export default function Home() {
   return (
     <>
       <Navbar />
       <HeroSection />
-      <ScrollRevealText text="An integrated approach to responsibly harness and transform global energy resources into the products the world needs" />
+      <ScrollRevealText text="Calmstone General Contracting delivers innovative engineering, procurement, and construction services built on speed, precision, and trust." />
       <SectorsSection />
       <HeroScrollSlider/>
       <LogoMarque color="#bfa046" />
+      <TestimonialSlider />
       <CertificationsSection/>
+      <SmallFooter/>
 
         
-      <Animation />
+    
     </>
   )
 }

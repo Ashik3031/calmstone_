@@ -6,6 +6,12 @@
 :root {
   --primary-yellow: #F3C623;
 }
+@layer base {
+  html {
+    font-family: var(--font-cormorant);
+    @apply antialiased;
+  }
+}
 
 @keyframes marquee {
   0% {

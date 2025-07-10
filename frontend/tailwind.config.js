@@ -6,6 +6,17 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+  /* All Tailwind “font-*” utilities below now resolve to Cormorant Garamond */
+  sans:   ["var(--font-cormorant)", "serif"],
+  serif:  ["var(--font-cormorant)", "serif"],
+  mono:   ["var(--font-cormorant)", "serif"],   // only needed if you’d previously forced mono → Cinzel
+
+  /* Custom aliases you’ve used elsewhere */
+  primary: ["var(--font-cormorant)", "serif"],
+  geist:   ["var(--font-cormorant)", "serif"],  // covers legacy `font-geist` classes
+  /* …add any other aliases you want to remap */
+},
        keyframes: {
         marquee: {
           "0%": { transform: "translateX(0%)" },

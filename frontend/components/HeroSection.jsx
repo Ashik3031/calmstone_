@@ -43,7 +43,9 @@ const HeroSection = ({ withOffset = true }) => {
 
   /* ─────────────────────────── render ───────────── */
   return (
-    <section className="relative bg-white isolate min-h-[180vh]">
+    <section className="relative bg-black isolate min-h-[180vh]">
+
+      {/* ───────────────── color 1.#FFD586 2 #FFF287.3.FCEF91 4.F5F0CD grey 1.E5E0D8 2.B6B09F──────────────── */}
       {/* top-0 so the expanded state covers the full viewport.
           offsetClass moves ONLY the collapsed card. */}
       <div
@@ -79,28 +81,28 @@ const HeroSection = ({ withOffset = true }) => {
                 }
               `}
             >
-              <div className="flex items-center justify-center mb-6">
+              {/* <div className="flex items-center justify-center mb-6">
                 <Image src="/logo.png" alt="Logo" width={200} height={200} />
-              </div>
+              </div> */}
 
-              <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+              <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
                 A New Era in Energy{" "}
                 <span className="text-black"> Infrastructure</span>
               </h1>
-              <h2 className="text-xl md:text-2xl font-semibold mb-6">
+              <h2 className="text-xl md:text-3xl font-semibold mb-6">
                 Smart, agile, and future-ready EPC solutions
               </h2>
-              <p className="text-base mb-8 opacity-90">
+              {/* <p className="text-base mb-8 opacity-90">
                 Calmstone General Contracting delivers innovative engineering,
                 procurement, and construction services built on speed,
                 precision, and trust.
-              </p>
+              </p> */}
             </div>
 
             {/* ---------- Expanded (full) text ---------- */}
             <div
               className={`
-                absolute inset-0 flex items-center justify-center
+                absolute inset-0 flex  justify-center mt-20
                 transition-all duration-700
                 ${
                   showSecondText
