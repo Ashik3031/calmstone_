@@ -20,7 +20,7 @@ export default function JobCard({ job }) {
   return (
     <>
       {/* ───────────────────────── Card ───────────────────────── */}
-      <li className="list-none group border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:border-gray-300 transition-all duration-300 bg-white hover:bg-gray-50/50">
+      <li className="list-none group border border-gray-200 rounded-xl p-6 hover:shadow-md hover:border-gray-300 transition-all duration-300 bg-white hover:bg-gray-200">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
           <div className="flex-1 space-y-3">
             {/* title & chips */}

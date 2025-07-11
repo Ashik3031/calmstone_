@@ -18,7 +18,7 @@ export default function Home() {
       <HeroSection />
       <ScrollRevealText text="Calmstone General Contracting delivers innovative engineering, procurement, and construction services built on speed, precision, and trust." />
       <SectorsSection />
-      <HeroScrollSlider/>
+      {/* <HeroScrollSlider/> */}
       <LogoMarque color="#bfa046" />
       <TestimonialSlider />
       

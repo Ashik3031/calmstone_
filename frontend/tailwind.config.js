@@ -35,6 +35,7 @@ module.exports = {
       fontFamily: {
         display: ["'Inter Tight'", "sans-serif"],
         body:    ["Inter", "sans-serif"],
+        sharetech: ["var(--font-sharetech)", "monospace"],
       },
     },
   },

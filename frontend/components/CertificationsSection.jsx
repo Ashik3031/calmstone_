@@ -5,7 +5,8 @@ const certifications = [
   { alt: 'ISO 14001:2015', src: '/certifications/iso-14001.png' },
   { alt: 'ISO 45001',      src: '/certifications/iso-45001.png' },
   { alt: 'ISO 9001:2015',  src: '/certifications/iso-9001.png' },
-  { alt: 'DUNS Registered',src: '/certifications/duns.png' },
+  { alt: 'In - Country',      src: '/certifications/incountry.png' },
+  { alt: 'In - Country',      src: '/certifications/prequalified.jpg' },
   // add or remove items as needed
 ];
 
@@ -15,7 +16,7 @@ export default function CertificationsSection() {
       <div className="max-w-7xl mx-auto px-6 text-center">
       <div className="relative inline-block mb-10">
   <h2 className="text-3xl font-bold text-gray-900 pb-5">
-    Certifications
+    CERTIFICATES AND ACCREDIATIONS 
   </h2>
 
   {/* underline */}

@@ -40,9 +40,13 @@ const Header = () => {
   const [hoveredMenu, setHoveredMenu] = useState(null);      // desktop mega-menu
   const [isMobileOpen, setIsMobileOpen] = useState(false);   // burger menu
   const [mobileExpandedMenu, setMobileExpandedMenu] = useState(null);
+  const [isHeaderHovered, setIsHeaderHovered] = useState(false);
+  const [isPastHero, setIsPastHero] = useState(false);
+  const isWhiteHeader = isHeaderHovered || hoveredMenu || isMobileOpen || isPastHero;
+
+
 
   // adds blur / border after hero
-  const [isPastHero, setIsPastHero] = useState(false);
 
   // NEW: detect scroll direction
   const scrollDir = useScrollDirection();                    // "up" | "down"
@@ -76,7 +80,7 @@ const Header = () => {
     scrollDir === "up" || hoveredMenu || isMobileOpen;  // visible if scrolling up or interacting
 
   const headerClasses = [
-    "fixed inset-x-0 top-0 z-50 transition-transform duration-300 hover:bg-black/80",
+    "fixed inset-x-0 top-0 z-50 transition-transform duration-300 hover:bg-white/95",
     !showNav && "-translate-y-full",                    // slide away on scroll-down
     (isPastHero || hoveredMenu || isMobileOpen) &&
       "backdrop-blur-md border-b border-gray-200 shadow-sm",
@@ -86,25 +90,31 @@ const Header = () => {
 
   /* ------------------ JSX ------------------ */
   return (
-    <header className={headerClasses}>
-      <nav className="max-w-7xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
+<header
+  className={headerClasses}
+  onMouseEnter={() => setIsHeaderHovered(true)}
+  onMouseLeave={() => setIsHeaderHovered(false)}
+>      <nav className="max-w-7xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/">
-          <Image
-            src="/logow.png"
-            alt="calmstone"
-            width={250}
-            height={250}
-            className="object-contain"
-          />
+        <Image
+  src={isWhiteHeader ? "/logo.png" : "/logow.png"}
+  alt="calmstone"
+  width={250}
+  height={250}
+  className="object-contain transition duration-300"
+/>
         </Link>
 
         {/* ---------- Desktop links ---------- */}
         <div className="hidden lg:flex items-center gap-10">
           {/* Careers link */}
           <Link
-            href="/aboutus"
-            className="text-white font-medium hover:text-white transition-colors duration-200 py-2 text-lg tracking-wide uppercase"
+            href="/about"
+className={`font-medium transition-colors duration-200 py-2 text-lg tracking-wide uppercase ${
+  isWhiteHeader ? "text-black hover:text-black" : "text-white hover:text-white"
+}`}
+
           >
             About Us
           </Link>
@@ -114,7 +124,12 @@ const Header = () => {
               className="relative"
               onMouseEnter={() => setHoveredMenu(name)}
             >
-              <button className="text-white font-medium hover:text-white transition-colors duration-200 py-2 text-lg tracking-wide uppercase">
+              <button
+className={`font-medium transition-colors duration-200 py-2 text-lg tracking-wide uppercase ${
+  isWhiteHeader ? "text-black hover:text-black" : "text-white hover:text-white"
+}`}
+
+               >
                 {name}
               </button>
 
@@ -122,7 +137,7 @@ const Header = () => {
               {hoveredMenu === name && (
                 <div
                   onMouseLeave={() => setHoveredMenu(null)}
-                  className="fixed left-0 top-full w-full bg-black/95 backdrop-blur-md text-white
+                  className="fixed left-0 top-full w-full bg-white/95 backdrop-blur-md text-black
                              shadow-2xl border-t border-gray-200 z-40 h-[400px] overflow-y-auto"
                 >
                   <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 h-full flex flex-col">
@@ -141,7 +156,7 @@ const Header = () => {
                                     <li key={label}>
                                       <Link
                                         href={href}
-                                        className="hover:text-black transition-colors duration-200 text-sm font-medium block py-1"
+                                        className="hover:text-white transition-colors duration-200 text-sm font-medium block py-1"
                                       >
                                         {label}
                                       </Link>
@@ -164,7 +179,7 @@ const Header = () => {
                     <div className="pt-6 border-t border-gray-200 flex justify-end mt-auto">
                       <Link
                         href={megaMenus[name].all.href}
-                        className="text-sm font-semibold text-white hover:text-black transition-colors duration-200 flex items-center gap-2"
+                        className="text-sm font-semibold text-white hover:text-white transition-colors duration-200 flex items-center gap-2"
                       >
                         {megaMenus[name].all.label} <ArrowRight size={14} />
                       </Link>
@@ -178,7 +193,10 @@ const Header = () => {
           {/* Careers link */}
           <Link
             href="/careers"
-            className="text-white font-medium hover:text-black transition-colors duration-200 py-2 text-lg tracking-wide uppercase"
+className={`font-medium transition-colors duration-200 py-2 text-lg tracking-wide uppercase ${
+  isWhiteHeader ? "text-black hover:text-black" : "text-white hover:text-white"
+}`}
+
           >
             Careers
           </Link>
@@ -189,7 +207,7 @@ const Header = () => {
           <Link
             href="/contact"
             className="text-black bg-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2
-                       hover:bg-black/90 hover:text-white transition-all duration-200 hover:shadow-lg hover:shadow-black/20"
+                       hover:bg-white/90 hover:text-black transition-all duration-200 hover:shadow-lg hover:shadow-white/20"
           >
             Let's connect <ArrowRight size={16} />
           </Link>
@@ -198,7 +216,7 @@ const Header = () => {
         {/* ---------- Burger icon ---------- */}
         <button
           onClick={() => setIsMobileOpen(!isMobileOpen)}
-          className="lg:hidden text-black hover:text-gray-700 transition-colors duration-200"
+          className="lg:hidden text-white hover:text-gray-700 transition-colors duration-200"
         >
           {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -212,7 +230,7 @@ const Header = () => {
               <div key={name} className="mb-4">
                 <button
                   onClick={() => toggleMobileSubmenu(name)}
-                  className="w-full flex items-center justify-between text-white font-medium py-3 hover:text-black transition-colors duration-200 text-left"
+                  className="w-full flex items-center justify-between text-white font-medium py-3 hover:text-white transition-colors duration-200 text-left"
                 >
                   {name}
                   <ChevronDown
@@ -239,7 +257,7 @@ const Header = () => {
                                   <li key={label}>
                                     <Link
                                       href={href}
-                                      className="text-gray-700 hover:text-black transition-colors duration-200 text-sm block py-1"
+                                      className="text-gray-700 hover:text-white transition-colors duration-200 text-sm block py-1"
                                       onClick={() => setIsMobileOpen(false)}
                                     >
                                       {label}
@@ -256,7 +274,7 @@ const Header = () => {
                     <div className="mt-4 pt-3 border-t border-gray-300">
                       <Link
                         href={megaMenus[name].all.href}
-                        className="text-sm font-semibold text-white hover:text-black transition-colors duration-200 flex items-center gap-2"
+                        className="text-sm font-semibold text-white hover:text-white transition-colors duration-200 flex items-center gap-2"
                         onClick={() => setIsMobileOpen(false)}
                       >
                         {megaMenus[name].all.label} <ArrowRight size={12} />
@@ -270,7 +288,7 @@ const Header = () => {
             {/* Careers mobile link */}
             <Link
               href="/careers"
-              className="block text-white font-medium py-3 hover:text-black transition-colors duration-200"
+              className="block text-white font-medium py-3 hover:text-white transition-colors duration-200"
               onClick={() => setIsMobileOpen(false)}
             >
               Careers
@@ -278,7 +296,7 @@ const Header = () => {
             {/* Careers mobile link */}
             <Link
               href="/about"
-              className="block text-white font-medium py-3 hover:text-black transition-colors duration-200"
+              className="block text-white font-medium py-3 hover:text-white transition-colors duration-200"
               onClick={() => setIsMobileOpen(false)}
             >
               About us
@@ -288,8 +306,8 @@ const Header = () => {
             {/* ---- Mobile CTA ---- */}
             <Link
               href="/contact"
-              className="block border border-black text-black bg-transparent px-4 py-3 rounded-lg font-semibold text-center mt-6
-                         hover:bg-black hover:text-white transition-colors duration-200"
+              className="block border border-white text-white bg-transparent px-4 py-3 rounded-lg font-semibold text-center mt-6
+                         hover:bg-white hover:text-white transition-colors duration-200"
               onClick={() => setIsMobileOpen(false)}
             >
               Let's Build Together

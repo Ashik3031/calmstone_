@@ -1,11 +1,22 @@
-import { Cormorant_Garamond } from "next/font/google";
+import { Cormorant_Garamond, 
+   Share_Tech_Mono
+ } from "next/font/google";
 import "./globals.css";
+
+
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-cormorant",
   weight: ["300", "400", "500", "600", "700"], // choose weights you need
   display: "swap",
+});
+
+const shareTechMono = Share_Tech_Mono({
+  subsets: ["latin"],
+  variable: "--font-sharetech",
+  weight: "400", // only one weight available
+  display: "swap",
 });
 
 export const metadata = {

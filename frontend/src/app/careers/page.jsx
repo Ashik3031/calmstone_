@@ -116,15 +116,15 @@ const dummyJobs = [
 
 export default async function CareersPage() {
   return (
-    <main className="min-h-screen bg-gray-50 text-gray-900 selection:bg-orange-200 mt-3 lg:mt-11">
+    <main className="min-h-screen bg-black text-gray-900 selection:bg-white-200 mt-3 lg:mt-11">
 
       {/* <Hero section removed for brevity while refactoring */}
 
-      <section id="positions" className="bg-white py-20">
+      <section id="positions" className="bg-black py-20">
         <div className="container mx-auto max-w-6xl px-4">
           <header className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-extrabold md:text-4xl">Current Openings</h2>
-            <p className="text-lg text-gray-600">Explore roles across our worldwide operations.</p>
+            <h2 className="mb-4 text-3xl font-extrabold md:text-4xl text-white">Current Openings</h2>
+            <p className="text-lg text-gray-100">Explore roles across our worldwide operations.</p>
           </header>
 
           {/* FilterBar removed */}
@@ -135,8 +135,8 @@ export default async function CareersPage() {
                 {dummyJobs.map(job => <JobCard key={job._id} job={job} />)}
               </div>
             ) : (
-              <div className="mx-auto max-w-md rounded-lg bg-gray-100 p-10 text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-inner">
+              <div className="mx-auto max-w-md rounded-lg bg-black p-10 text-center">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-black shadow-inner">
                   <svg className="h-8 w-8 text-gray-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 </div>
                 <h3 className="mb-2 text-xl font-semibold">No roles available</h3>
@@ -149,7 +149,7 @@ export default async function CareersPage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="bg-blue-900 py-20 text-white">
+      {/* <section className="bg-blue-900 py-20 text-white">
         <div className="container mx-auto max-w-4xl px-4 text-center">
           <h2 className="mb-4 text-3xl font-extrabold md:text-4xl">
             Ready to Join Our Team?
@@ -173,7 +173,7 @@ export default async function CareersPage() {
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }

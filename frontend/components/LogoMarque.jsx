@@ -5,10 +5,10 @@ import React from "react";
 const logos = [
   "/logos/logo1.png",
   "/logos/logo2.png",
-  "/logos/logo3.png",
+  "/logos/logo3.jpg",
   "/logos/logo4.png",
   "/logos/logo5.png",
-  "/logos/logo6.png",
+  
 ];
 
 const LogoMarquee = () => {
@@ -18,7 +18,7 @@ const LogoMarquee = () => {
       {/* Heading */}
       <div className="relative inline-block mb-10 text-center">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 pb-5">
-          Our Partners
+          OUR CLIENTS 
         </h2>
         <span className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-32 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent" />
       </div>
