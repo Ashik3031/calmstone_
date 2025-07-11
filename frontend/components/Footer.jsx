@@ -3,65 +3,68 @@ import { Linkedin } from "lucide-react";
 
 const SmallFooter = () => {
   return (
-    <footer className="bg-black text-white py-20 border-t border-gray-700">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
-        {/* Left: Branding */}
-        <div>
-          <h3 className="text-xl font-bold mb-2">Calmstone</h3>
-          <p className="text-sm text-gray-400">
-            © {new Date().getFullYear()} Calmstone. All rights reserved.
-          </p>
-        </div>
+    <footer className="bg-[#0a0a0a] text-white py-20 border-t border-gray-800">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Main Content */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          {/* Left: Branding */}
+          <div>
+            <h3 className="text-3xl font-bold mb-4 text-yellow-400">Calmstone</h3>
+            <p className="text-gray-400 text-base leading-relaxed">
+              Building tomorrow's solutions with today's innovation. From engineering excellence to reliable partnerships — Calmstone leads the future.
+            </p>
+          </div>
 
-        {/* Center: Quick Links */}
-        <div className="space-y-2">
-          <h4 className="text-base font-semibold text-yellow-400 mb-4 uppercase tracking-wide">Quick Links</h4>
-          <ul className="space-y-2 text-sm">
-            <li>
-              <a href="/about" className="hover:text-yellow-400 transition">
+          {/* Center: Quick Links */}
+          <div className="md:flex md:flex-col md:items-center">
+            <h4 className="text-base font-semibold text-yellow-400 mb-6 uppercase tracking-wider border-b border-gray-700 pb-2">
+              Quick Links
+            </h4>
+            <nav className="grid gap-3 text-sm">
+              <a href="/about" className="text-gray-300 hover:text-yellow-400 transition">
                 About Us
               </a>
-            </li>
-            <li>
-              <a href="/services" className="hover:text-yellow-400 transition">
+              <a href="/services" className="text-gray-300 hover:text-yellow-400 transition">
                 Services
               </a>
-            </li>
-            <li>
-              <a href="/careers" className="hover:text-yellow-400 transition">
+              <a href="/careers" className="text-gray-300 hover:text-yellow-400 transition">
                 Careers
               </a>
-            </li>
-            <li>
-              <a href="/contact" className="hover:text-yellow-400 transition">
+              <a href="/contact" className="text-gray-300 hover:text-yellow-400 transition">
                 Contact
               </a>
-            </li>
-          </ul>
-        </div>
+            </nav>
+          </div>
 
-        {/* Right: Social & Policies */}
-        <div className="flex flex-col items-start md:items-end space-y-6">
-          <div>
-            <h4 className="text-base font-semibold text-yellow-400 mb-4 uppercase tracking-wide">Connect With Us</h4>
+          {/* Right: Social */}
+          <div className="md:flex md:flex-col md:items-end">
+            <h4 className="text-base font-semibold text-yellow-400 mb-6 uppercase tracking-wider border-b border-gray-700 pb-2">
+              Connect
+            </h4>
             <a
               href="https://www.linkedin.com/company/107668067/admin/dashboard/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-gray-300 hover:text-[#0A66C2] transition"
-              aria-label="LinkedIn"
+              className="inline-flex items-center gap-2 text-gray-300 hover:text-[#0A66C2] transition text-sm"
+              aria-label="Follow us on LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
-              LinkedIn
+              <span>LinkedIn</span>
             </a>
           </div>
+        </div>
 
-          <div className="flex space-x-6 text-sm text-gray-400">
-            <a href="#" className="hover:text-yellow-400 transition">
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-gray-500 text-sm">
+            © {new Date().getFullYear()} Calmstone. All rights reserved.
+          </p>
+          <div className="flex space-x-6 text-sm">
+            <a href="#" className="text-gray-500 hover:text-yellow-400 transition">
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-yellow-400 transition">
-              Terms
+            <a href="#" className="text-gray-500 hover:text-yellow-400 transition">
+              Terms of Service
             </a>
           </div>
         </div>
