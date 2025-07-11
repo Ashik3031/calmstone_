@@ -103,7 +103,7 @@ const Header = () => {
         <div className="hidden lg:flex items-center gap-10">
           {/* Careers link */}
           <Link
-            href="/about"
+            href="/aboutus"
             className="text-white font-medium hover:text-white transition-colors duration-200 py-2 text-lg tracking-wide uppercase"
           >
             About Us
@@ -187,7 +187,7 @@ const Header = () => {
         {/* ---------- Desktop CTA ---------- */}
         <div className="hidden lg:block">
           <Link
-            href="#"
+            href="/contact"
             className="text-black bg-white px-6 py-3 rounded-lg font-semibold flex items-center gap-2
                        hover:bg-black/90 hover:text-white transition-all duration-200 hover:shadow-lg hover:shadow-black/20"
           >

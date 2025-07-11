@@ -12,7 +12,7 @@ import "swiper/css/effect-coverflow";
 
 export default function TestimonialSlider() {
   return (
-    <section className="relative bg-black py-24 px-4 overflow-hidden">
+    <section className="relative bg-white py-24 px-4 overflow-hidden">
       <div className="relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
@@ -21,7 +21,7 @@ export default function TestimonialSlider() {
                          bg-clip-text text-transparent">
             Our Commitment
           </h2>
-          <p className="text-xl text-white max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
             Discover our most innovative and impactful projects that shape the future
           </p>
         </div>
