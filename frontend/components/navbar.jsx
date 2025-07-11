@@ -13,10 +13,10 @@ const megaMenus = {
   Services: {
     columns: {
       Services: [
-        { label: "Engineering, Procurement & Construction (EPC)", href: "/solutions/integrated-approach" },
-        { label: "Procurement & Supply Chain Management", href: "/solutions/mcdermott-difference" },
-        { label: "Onshore Construction", href: "/solutions/mcdermott-difference" },
-        { label: "Project Management & Execution", href: "/solutions/mcdermott-difference" },
+        { label: "Engineering, Procurement & Construction (EPC)", href: "/engineering_transition" },
+        { label: "General Contracting", href: "/general-contract" },
+        { label: "Design-Build Services", href: "/construction" },
+        { label: "Project M", href: "/solutions/mcdermott-difference" },
         { label: "Plant Revamps & Expansion Projects", href: "/solutions/mcdermott-difference" },
       ],
     },
@@ -26,12 +26,13 @@ const megaMenus = {
   Commitments: {
     columns: {
       Commitments: [
-        { label: "Priorities & Reporting", href: "/sustainability/priorities-reporting" },
-        { label: "Sustainability Performance", href: "/sustainability/performance" },
-        { label: "People", href: "/sustainability/people" },
+        { label: "Qusahwira production Facilities Upgrade", href: "/quswahira-upgrade" },
+        { label: "Engineering Services", href: "/engineering-service" },
+        { label: "Services for SPEL Job", href: "/spel" },
+        { label: "Documents for MTO and BOQ for LZ LTDP 1", href: "/mto" },
       ],
     },
-    all: { label: "Our sustainability journey", href: "/sustainability" },
+    all: { label: "Explore our Commitments", href: "/commitments  " },
   },
 };
 /* -------------------------------------------------- */
