@@ -203,7 +203,6 @@ const AboutPage = () => {
             </p>
           </div>
 
-<<<<<<< Updated upstream
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[{
               icon: Target,
@@ -234,59 +233,6 @@ const AboutPage = () => {
                 </p>
               </motion.div>
             ))}
-=======
-          <div className="space-y-4">
-            {accordionData.map((item, index) => {
-              const IconComponent = item.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="border border-[#facc15]/20 rounded-xl overflow-hidden bg-[#fefce8] shadow-sm"
-                >
-                  <button
-                    onClick={() => toggleAccordion(index)}
-                    className="w-full text-left p-6 flex items-center justify-between hover:bg-[#facc15]/10 transition-colors duration-300"
-                  >
-                    <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 bg-[#facc15]/20 rounded-lg flex items-center justify-center">
-                        <IconComponent className="w-6 h-6 text-[#facc15]" />
-                      </div>
-                      <span className="text-2xl font-semibold text-black">{item.title}</span>
-                    </div>
-                    <motion.div
-                      animate={{ rotate: openIndex === index ? 45 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="w-8 h-8 border-2 border-[#facc15] rounded-full flex items-center justify-center"
-                    >
-                      <span className="text-[#facc15] text-xl font-bold">
-                        <Plus className='w-6 h-6'/>
-                      </span>
-                    </motion.div>
-                  </button>
-                  
-                  <motion.div
-                    initial={false}
-                    animate={{ 
-                      height: openIndex === index ? 'auto' : 0,
-                      opacity: openIndex === index ? 1 : 0 
-                    }}
-                    transition={{ duration: 0.5, ease: 'easeInOut' }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-6 pb-6">
-                      <div className="ml-16 text-lg leading-relaxed text-gray-700">
-                        {item.content}
-                      </div>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              );
-            })}
->>>>>>> Stashed changes
           </div>
         </motion.div>
       </section>

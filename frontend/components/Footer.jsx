@@ -21,7 +21,7 @@ const SmallFooter = () => {
               Quick Links
             </h4>
             <nav className="grid gap-3 text-sm">
-              <a href="/aboutus" className="text-gray-300 hover:text-yellow-400 transition">
+              <a href="/aboutus" className="text-white hover:text-yellow-400 transition">
                 About Us
               </a>
               
@@ -88,7 +88,7 @@ const SmallFooter = () => {
             © {new Date().getFullYear()} Calm Stone. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
-            <a href="/privacy-policy" className="text-gray-500 hover:text-yellow-400 transition">
+            <a href="/privacy-policy" className="text-white hover:text-yellow-400 transition">
               Privacy Policy
             </a>
            
