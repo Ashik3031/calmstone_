@@ -119,18 +119,11 @@ const Header = () => {
           {/* Careers link */}
           <Link
             href="/aboutus"
-<<<<<<< Updated upstream
             className={`font-medium transition-colors duration-200 py-2 text-lg tracking-wide uppercase ${
               isWhiteHeader
                 ? "text-black hover:text-black"
                 : "text-white hover:text-black"
             }`}
-=======
-className={`font-medium transition-colors duration-200 py-2 text-lg tracking-wide uppercase ${
-  isWhiteHeader ? "text-black hover:text-black" : "text-white hover:text-white"
-}`}
-
->>>>>>> Stashed changes
           >
             About Us
           </Link>
