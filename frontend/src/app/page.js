@@ -16,14 +16,14 @@ export default function Home() {
     <>
       <Navbar />
       <HeroSection />
-      <ScrollRevealText text="Calmstone General Contracting delivers innovative engineering, procurement, and construction services built on speed, precision, and trust." />
+      <ScrollRevealText text="Calm Stone General Contracting delivers innovative engineering, procurement, and construction services built on speed, precision, and trust." />
       <SectorsSection />
       {/* <HeroScrollSlider/> */}
       <LogoMarque color="#bfa046" />
       <TestimonialSlider />
       
       <CertificationsSection/>
-      <SmallFooter/>
+      {/* <SmallFooter/> */}
 
         
     

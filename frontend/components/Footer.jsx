@@ -1,17 +1,17 @@
 import React from "react";
-import { Linkedin } from "lucide-react";
+import { Linkedin, Phone, MapPin, Mail } from "lucide-react";
 
 const SmallFooter = () => {
   return (
-    <footer className="bg-[#0a0a0a] text-white py-20 border-t border-gray-800">
+    <footer className="bg-[#0a0a0a] text-white font-bold py-20 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-6">
         {/* Main Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Left: Branding */}
           <div>
-            <h3 className="text-3xl font-bold mb-4 text-yellow-400">Calmstone</h3>
-            <p className="text-gray-400 text-base leading-relaxed">
-              Building tomorrow's solutions with today's innovation. From engineering excellence to reliable partnerships — Calmstone leads the future.
+            <h3 className="text-3xl font-bold mb-4 text-yellow-400">Calm Stone</h3>
+            <p className="text-white text-base leading-relaxed">
+              Building tomorrow's solutions with today's innovation. From engineering excellence to reliable partnerships — Calm Stone leads the future.
             </p>
           </div>
 
@@ -21,49 +21,77 @@ const SmallFooter = () => {
               Quick Links
             </h4>
             <nav className="grid gap-3 text-sm">
-              <a href="/about" className="text-gray-300 hover:text-yellow-400 transition">
+              <a href="/aboutus" className="text-white hover:text-yellow-400 transition font-bold">
                 About Us
               </a>
-              <a href="/services" className="text-gray-300 hover:text-yellow-400 transition">
-                Services
-              </a>
-              <a href="/careers" className="text-gray-300 hover:text-yellow-400 transition">
+              
+              <a href="/careers" className="text-white hover:text-yellow-400 transition">
                 Careers
               </a>
-              <a href="/contact" className="text-gray-300 hover:text-yellow-400 transition">
+              <a href="/contact" className="text-white hover:text-yellow-400 transition">
                 Contact
               </a>
             </nav>
           </div>
 
-          {/* Right: Social */}
-          <div className="md:flex md:flex-col md:items-end">
-            <h4 className="text-base font-semibold text-yellow-400 mb-6 uppercase tracking-wider border-b border-gray-700 pb-2">
-              Connect
-            </h4>
-            <a
-              href="https://www.linkedin.com/company/107668067/admin/dashboard/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-gray-300 hover:text-[#0A66C2] transition text-sm"
-              aria-label="Follow us on LinkedIn"
-            >
-              <Linkedin className="w-5 h-5" />
-              <span>LinkedIn</span>
-            </a>
+          {/* Right: Connect */}
+          <div className="md:flex md:flex-col md:items-end space-y-6">
+            <div>
+              <h4 className="text-base font-semibold text-yellow-400 mb-6 uppercase tracking-wider border-b border-gray-700 pb-2">
+                Connect
+              </h4>
+
+              <a
+                href="https://www.linkedin.com/company/107668067/admin/dashboard/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-yellow-400 hover:text-white transition text-sm mb-4"
+                aria-label="Follow us on LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+                <span className="text-white">LinkedIn</span>
+              </a>
+
+              <div className="flex items-start space-x-3">
+                <Mail className="w-4 h-4 text-[#facc15] mt-1" />
+                <div>
+                  <h4 className="text-base font-semibold">Email</h4>
+                  <p className="text-gray-400 text-sm">dcc@calmstonegc.com</p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-3 mt-4">
+                <Phone className="w-4 h-4 text-[#facc15] mt-1" />
+                <div>
+                  <h4 className="text-base font-semibold">Phone</h4>
+                  <p className="text-gray-400 text-sm">+971 44 561872</p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-3 mt-4">
+                <MapPin className="w-4 h-4 text-[#facc15] mt-1" />
+                <div>
+                  <h4 className="text-base font-semibold">Address</h4>
+                  <p className="text-gray-400 text-sm">
+                    Office M2020, M2 Bin Arar Holdings Building<br />
+                    Al Najda Street, Abu Dhabi
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} Calmstone. All rights reserved.
+          <p className="text-white text-sm">
+            © {new Date().getFullYear()} Calm Stone. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
-            <a href="#" className="text-gray-500 hover:text-yellow-400 transition">
+            <a href="#" className="text-white hover:text-yellow-400 transition">
               Privacy Policy
             </a>
-            <a href="#" className="text-gray-500 hover:text-yellow-400 transition">
+            <a href="#" className="text-white hover:text-yellow-400 transition">
               Terms of Service
             </a>
           </div>

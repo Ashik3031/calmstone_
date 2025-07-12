@@ -130,7 +130,7 @@ export default function OnshorePage() {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             Let&apos;s Power the{" "}
-            <span className="text-yellow-400">Transition</span> Together
+            <span >Transition</span> Together
           </h2>
           <p className="text-xl mb-12 text-gray-300 leading-relaxed">
             Reach out to explore how we can support your journey to a low-carbon
@@ -148,7 +148,7 @@ export default function OnshorePage() {
               </span>
             </Link>
 
-            <Link
+            {/* <Link
               href="#"
               className="group border-2 border-white text-white px-10 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-black transition-all"
             >
@@ -156,7 +156,7 @@ export default function OnshorePage() {
                 Download Brochure
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
-            </Link>
+            </Link> */}
           </div>
         </motion.div>
       </motion.section>

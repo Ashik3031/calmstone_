@@ -61,7 +61,7 @@ const ScrollRevealText = ({ text = '' }) => {
 
         {/* Animated Text */}
         <p
-  className={`${shareTechMono.className} text-[40px] font-normal text-black transition-opacity duration-700`}
+  className={` text-[40px] font-bold text-black transition-opacity duration-700`}
 >
   {words.map((word, idx) => (
     <span

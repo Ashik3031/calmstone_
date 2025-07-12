@@ -86,7 +86,7 @@ const HeroSection = ({ withOffset = true }) => {
             >
               <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
                 A New Era in Energy{" "}
-                <span className="text-black">Infrastructure</span>
+                Infrastructure
               </h1>
               <h2 className="text-xl md:text-3xl font-semibold mb-6">
                 Smart, agile, and future-ready EPC solutions
@@ -108,17 +108,17 @@ const HeroSection = ({ withOffset = true }) => {
               <div className="text-center w-full max-w-4xl">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
                   Powering the Future of{" "}
-                  <span className="text-black">Energy</span> Infrastructure
+                  Energy Infrastructure
                 </h2>
                 <p className="text-xl md:text-2xl opacity-90 mb-12">
                   Smart EPC solutions, global expertise, and real-world execution — built for tomorrow.
                 </p>
-                <button
+                {/* <button
                   type="button"
                   className="bg-[#FFB22C] text-black px-10 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg"
                 >
                   Discover Our Capabilities
-                </button>
+                </button> */}
               </div>
             </div>
 

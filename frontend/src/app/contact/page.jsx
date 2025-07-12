@@ -14,11 +14,13 @@ const ContactPage = () => {
         transition={{ duration: 1 }}
         className="text-center mb-16"
       >
-        <div className="w-20 h-1 bg-[#facc15] mx-auto mb-6"></div>
-        <h1 className="text-5xl font-bold">
-          <span className="text-black">Get in</span> <span className="text-[#facc15]">Touch</span>
-        </h1>
-        <div className="w-20 h-1 bg-[#facc15] mx-auto mt-6"></div>
+          <div className="relative inline-block mb-10 text-center">
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 pb-5">
+         GET IN TOUCH WITH US
+        </h2>
+        <span className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-32 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent" />
+      </div>
+        
         <p className="mt-4 text-lg text-gray-600 max-w-xl mx-auto">
           We'd love to hear from you. Reach out for project inquiries, collaborations, or general questions.
         </p>

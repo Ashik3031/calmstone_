@@ -133,7 +133,7 @@ export default function PlantRevampPage() {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            Ready to <span className="text-yellow-400">Upgrade</span> Your
+            Ready to <span >Upgrade</span> Your
             Plant?
           </h2>
           <p className="text-xl mb-12 text-gray-300 leading-relaxed">

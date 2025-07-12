@@ -261,7 +261,7 @@ export default function EnergyTransitionPage() {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             Let&apos;s Power the{" "}
-            <span className="text-yellow-400">Transition</span> Together
+            <span >Transition</span> Together
           </h2>
           <p className="text-xl mb-12 text-gray-300 leading-relaxed">
             Reach out to explore how we can support your journey to a low-carbon

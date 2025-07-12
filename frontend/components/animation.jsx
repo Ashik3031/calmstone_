@@ -69,7 +69,7 @@ export default function HeroScrollSlider() {
              Engineering energy for today<br />— and the future  
               </h1>
               <button className="mt-6 px-4 sm:px-6 py-2 sm:py-3 border-2 border-neutral-900 font-medium tracking-wide hover:bg-neutral-900 hover:text-white transition text-sm sm:text-base">
-                Discover the Calmstone Approach
+                Discover the Calm Stone Approach
               </button>
             </div>
           </div>
@@ -105,7 +105,7 @@ export default function HeroScrollSlider() {
               Engineering energy for today <span className='text-yellow-400'>—</span> and the future  
             </h1>
             <button className="mt-8 px-6 py-3 border-2 border-neutral-900 font-medium tracking-wide hover:bg-neutral-900 hover:text-white transition">
-             Discover the Calmstone Approach
+             Discover the Calm Stone Approach
             </button>
           </div>
 

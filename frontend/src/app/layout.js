@@ -2,6 +2,8 @@ import { Cormorant_Garamond,
    Share_Tech_Mono
  } from "next/font/google";
 import "./globals.css";
+import LayoutWrapper from "../../components/LayoutWrapper";
+import SmallFooter from "../../components/Footer";
 
 
 
@@ -28,7 +30,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={cormorant.variable}>
   <body className="font-primary antialiased">
-    {children}
+     <LayoutWrapper>{children}</LayoutWrapper>
+     <SmallFooter/>
   </body>
   
 </html>
